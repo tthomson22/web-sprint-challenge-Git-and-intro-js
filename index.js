@@ -244,17 +244,18 @@ Use get20s to do the following:
 Example born in 1901 and died in 1959 - included -- born in 1889 and died in 1925 not included
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 // Hint - Look up the .split() method
-console.log(Number.parseInt(artists[5].years.split(' ', 1)));
+
 function get20s(array) {
   const newArray = [];
   for(let i = 0; i < array.length; i++){
-    if(Number.parseInt(artists[i].years.split(' ', 1)) > 1901){
-      newArray.push(artists[i].name);
+    let yearString = array[i].years;
+    if(yearString.split(' ', 1) >= '1901' && yearString.split(' ', 1) <= '2000'){
+      newArray.push(array[i].name);
     }
   }
   return newArray;
 }
-console.log(get20s('task 4:', artists));
+console.log('task 4:', get20s(artists));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -347,8 +348,8 @@ For example artistByCountry(artists, 'Spanish') will return: [ 'Salvador Dali', 
 function artistByCountry(array, isFrom){
   const newArray = [];
   for(let i = 0; i < array.length; i++){
-    if(array[i].nationality.split(',').includes(isFrom)){
-      newArray.push(array[i].name)
+    if(array[i].nationality === isFrom){
+      newArray.push(array[i].name);
     }
   }
   return newArray;
